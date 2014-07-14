@@ -1,0 +1,13 @@
+header{
+    height:50px;
+    background-color: antiquewhite;
+}
+footer{
+    height: 50px;
+    background-color: antiquewhite;
+}
+
+.main{
+    min-height: 500px;
+    background-color: burlywood;
+}
