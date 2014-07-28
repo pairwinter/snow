@@ -14,7 +14,7 @@ public class BaseException extends RuntimeException implements Serializable {
     public final static long	serialVersionUID	= 12345678;
     private boolean				debug				= true;
     private String				trace;
-    private int					code				= 0;
+    private int					code				= 500;
     private String              type = BaseException.BUSINESS_EXCEPTION;
     public static final String BUSINESS_EXCEPTION = "Buiness";
     public static final String CONTROLLER_EXCEPTION = "Controller";
