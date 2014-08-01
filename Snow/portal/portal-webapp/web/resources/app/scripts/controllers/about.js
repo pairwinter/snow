@@ -7,7 +7,7 @@
  * # AboutCtrl
  * Controller of the resourcesApp
  */
-angular.module('resourcesApp')
+angular.module('snowApp')
   .controller('AboutCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
