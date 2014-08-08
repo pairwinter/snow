@@ -35,31 +35,11 @@ angular.module('snowApp')
         var overlayer = new OpenLayers.Layer.XYZ( "ESRI", "http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/${z}/${y}/${x}",
             {
                 isBaseLayer:!true
-//                ,sphericalMercator: true
                 ,maxExtent:overlayerExtent
                 ,displayOutsideMaxExtent:false,
                 metedata:{contactsLayer:true},tileOrigin: new OpenLayers.LonLat(-180, -90).transform('EPSG:4326','EPSG:900913')
 
             });
-//        overlayer = new OpenLayers.Layer.WMS(
-//            "Global Imagery",
-//            "http://maps.opengeo.org/geowebcache/service/wms",
-//            {layers: "bluemarble"},
-//            {tileOrigin: new OpenLayers.LonLat(-180, -90).transform('EPSG:4326','EPSG:900913')}
-//        )
-//        var apiKey = "AqTGBsziZHIJYYxgivLBf0hVdrAk9mWO5cQcb8Yux8sW5M8c8opEC2lZqKR1ZZXf";
-//        var overlayer = new OpenLayers.Layer.Bing({
-//            name: "Road tiles with all zoom levels",
-//            type: "Road",
-//            key: apiKey,
-//            isBaseLayer:!true
-////                ,sphericalMercator: true
-//            ,maxExtent:overlayerExtent
-//            ,displayOutsideMaxExtent:false
-//            ,tileOrigin: new OpenLayers.LonLat(-180, -90).transform('EPSG:4326','EPSG:900913')
-//        },{
-//            tileOrigin: new OpenLayers.LonLat(-180, -90).transform('EPSG:4326','EPSG:900913')
-//        } );
 
         var polygonLayer = new OpenLayers.Layer.Vector(
             "PolygonsLayer",
