@@ -3,7 +3,7 @@
 
 // # Globbing
 // for performance reasons we're only matching one level down:
-// 'test/spec/{,*/}*.js'
+// 'test/spec/{,**/}*.js'
 // use this if you want to recursively match all subfolders:
 // 'test/spec/**/*.js'
 
@@ -14,6 +14,8 @@ module.exports = function (grunt) {
 
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
+
+    grunt.loadNpmTasks('assemble');
 
   // Configurable paths for the application
   var appConfig = {
@@ -34,18 +36,18 @@ module.exports = function (grunt) {
         tasks: ['wiredep']
       },
       js: {
-        files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
+        files: ['<%= yeoman.app %>/scripts/{,**/}*.js'],
         tasks: ['newer:jshint:all'],
         options: {
           livereload: '<%= connect.options.livereload %>'
         }
       },
       jsTest: {
-        files: ['test/spec/{,*/}*.js'],
+        files: ['test/spec/{,**/}*.js'],
         tasks: ['newer:jshint:test', 'karma']
       },
       compass: {
-        files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
+        files: ['<%= yeoman.app %>/styles/{,**/}*.{scss,sass}'],
         tasks: ['compass:server', 'autoprefixer']
       },
       gruntfile: {
@@ -56,12 +58,53 @@ module.exports = function (grunt) {
           livereload: '<%= connect.options.livereload %>'
         },
         files: [
-          '<%= yeoman.app %>/{,*/}*.html',
-          '.tmp/styles/{,*/}*.css',
-          '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+          '<%= yeoman.app %>/{,**/}*.html',
+          '.tmp/styles/{,**/}*.css',
+          '<%= yeoman.app %>/images/{,**/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
+      },
+      assemble:{
+          files:['<%= yeoman.app %>/{,**/}*.html'],
+          tasks:['assemble:serve']
       }
     },
+      /**
+       * assemble is grunt plugin, it make the layout for the pages
+       *
+       * src : the files to be builed with the layout file.
+       * dest: the place where put the files into here after builed by layout.
+       *
+       * */
+      assemble: {
+          options: {
+              layout: ['<%= yeoman.dist %>/views/layouts/layout.default.html'],
+              initializeEngine:function(engine){
+//                  engine.startDelimiter = '[[';
+//                  engine.endDelimiter = ']]';
+              }
+          }
+          ,site_default: {
+              options: {
+                  layout: '<%= yeoman.dist %>/views/layouts/layout.default.html'
+              },
+              src:['<%= yeoman.dist %>/views/index/*.html'],
+              dest: './'
+          }
+          ,site_course_example: {
+              options: {
+                  layout: '<%= yeoman.dist %>/views/layouts/layout.course.examples.html'
+              },
+              src:['<%= yeoman.dist %>/views/course/examples/{,**/}*.html'],
+              dest: './'
+          },
+          serve:{
+              options: {
+                  layout: '<%= yeoman.app %>/views/layouts/layout.course.examples.html'
+              },
+              src:['<%= yeoman.app %>/views/course/examples/{,**/}*.html'],
+              dest: '.tmp'
+          }
+      },
 
     // The actual grunt server settings
     connect: {
@@ -119,14 +162,14 @@ module.exports = function (grunt) {
       all: {
         src: [
           'Gruntfile.js',
-          '<%= yeoman.app %>/scripts/{,*/}*.js'
+          '<%= yeoman.app %>/scripts/{,**/}*.js'
         ]
       },
       test: {
         options: {
           jshintrc: 'test/.jshintrc'
         },
-        src: ['test/spec/{,*/}*.js']
+        src: ['test/spec/{,**/}*.js']
       }
     },
 
@@ -137,7 +180,7 @@ module.exports = function (grunt) {
           dot: true,
           src: [
             '.tmp',
-            '<%= yeoman.dist %>/{,*/}*',
+            '<%= yeoman.dist %>/{,**/}*',
             '!<%= yeoman.dist %>/.git*'
           ]
         }]
@@ -154,7 +197,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '.tmp/styles/',
-          src: '{,*/}*.css',
+          src: '{,**/}*.css',
           dest: '.tmp/styles/'
         }]
       }
@@ -170,7 +213,7 @@ module.exports = function (grunt) {
         ignorePath:  /\.\.\//
       },
       sass: {
-        src: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
+        src: ['<%= yeoman.app %>/styles/{,**/}*.{scss,sass}'],
         ignorePath: /(\.\.\/){1,2}bower_components\//
       }
     },
@@ -208,9 +251,9 @@ module.exports = function (grunt) {
     filerev: {
       dist: {
         src: [
-          '<%= yeoman.dist %>/scripts/{,*/}*.js',
-          '<%= yeoman.dist %>/styles/{,*/}*.css',
-          '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
+          '<%= yeoman.dist %>/scripts/{,**/}*.js',
+          '<%= yeoman.dist %>/styles/{,**/}*.css',
+          '<%= yeoman.dist %>/images/{,**/}*.{png,jpg,jpeg,gif,webp,svg}',
           '<%= yeoman.dist %>/styles/fonts/*'
         ]
       }
@@ -220,7 +263,7 @@ module.exports = function (grunt) {
     // concat, minify and revision files. Creates configurations in memory so
     // additional tasks can operate on them
     useminPrepare: {
-      html: '<%= yeoman.app %>/index.html',
+      html: ['<%= yeoman.app %>/index.html','<%= yeoman.app %>/views/layouts/*.html'],
       options: {
         dest: '<%= yeoman.dist %>',
         flow: {
@@ -237,8 +280,8 @@ module.exports = function (grunt) {
 
     // Performs rewrites based on filerev and the useminPrepare configuration
     usemin: {
-      html: ['<%= yeoman.dist %>/{,*/}*.html'],
-      css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
+      html: ['<%= yeoman.dist %>/{,**/}*.html'],
+      css: ['<%= yeoman.dist %>/styles/{,**/}*.css'],
       options: {
         assetsDirs: ['<%= yeoman.dist %>','<%= yeoman.dist %>/images']
       }
@@ -252,7 +295,7 @@ module.exports = function (grunt) {
     //   dist: {
     //     files: {
     //       '<%= yeoman.dist %>/styles/main.css': [
-    //         '.tmp/styles/{,*/}*.css'
+    //         '.tmp/styles/{,**/}*.css'
     //       ]
     //     }
     //   }
@@ -275,7 +318,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= yeoman.app %>/images',
-          src: '{,*/}*.{png,jpg,jpeg,gif}',
+          src: '{,**/}*.{png,jpg,jpeg,gif}',
           dest: '<%= yeoman.dist %>/images'
         }]
       }
@@ -286,7 +329,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= yeoman.app %>/images',
-          src: '{,*/}*.svg',
+          src: '{,**/}*.svg',
           dest: '<%= yeoman.dist %>/images'
         }]
       }
@@ -304,7 +347,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: '<%= yeoman.dist %>',
-          src: ['*.html', 'views/{,*/}*.html'],
+          src: ['*.html', 'views/{,**/}*.html'],
           dest: '<%= yeoman.dist %>'
         }]
       }
@@ -343,11 +386,12 @@ module.exports = function (grunt) {
             '*.{ico,png,txt}',
             '.htaccess',
             '*.html',
-            'views/{,*/}*.html',
-            'images/{,*/}*.{webp}',
-            'fonts/*'
+            'views/{,**/}*.html',
+            'images/{,**/}*.{webp}',
+            'fonts/*',
+            'layouts/*'
           ]
-        }, {
+        },{
           expand: true,
           cwd: '.tmp/images',
           dest: '<%= yeoman.dist %>/images',
@@ -363,7 +407,7 @@ module.exports = function (grunt) {
         expand: true,
         cwd: '<%= yeoman.app %>/styles',
         dest: '.tmp/styles/',
-        src: '{,*/}*.css'
+        src: '{,**/}*.css'
       }
     },
 
@@ -401,6 +445,7 @@ module.exports = function (grunt) {
       'clean:server',
       'wiredep',
       'concurrent:server',
+        'assemble:serve',
       'autoprefixer',
       'connect:livereload',
       'watch'
@@ -434,7 +479,8 @@ module.exports = function (grunt) {
     'uglify',
     'filerev',
     'usemin',
-    'htmlmin'
+    'htmlmin',
+    'assemble'
   ]);
 
   grunt.registerTask('default', [
