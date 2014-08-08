@@ -17,18 +17,18 @@
 </head>
 <body ng-app="snowApp">
 <!--[if lt IE 7]>
-<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<%=base_ie7_lessthen%>
 <![endif]-->
 
 <!-- Add your site or application content here -->
 <div class="container">
     <div class="header">
         <ul class="nav nav-pills pull-right">
-            <li class="active"><a ng-href="#">Home</a></li>
+            <li class="active"><a ng-href="#"><%=base_home%></a></li>
         </ul>
-        <h3 class="text-muted">Course Demo</h3>
+        <h3 class="text-muted"><%=nav_course_name%></h3>
     </div>
-    <div>{{>body}}</div>
+    <div>[%=body%]</div>
     <div class="footer">
         <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
     </div>
@@ -52,12 +52,15 @@
 <script src="/bower_components/json3/lib/json3.min.js"></script>
 <![endif]-->
 <!-- endbuild -->
+<script src="/bower_components/angular/angular.js"></script>
+<script src="/scripts/app.course.examples.js"></script>
+<script src="/scripts/services/i18n/messages_en_US.js"></script>
 
 <!-- build:js(.) scripts/layout.course.examples.vendor.js -->
 <!-- bower:js -->
 <script src="/bower_components/jquery/dist/jquery.js"></script>
 <script src="/bower_components/es5-shim/es5-shim.js"></script>
-<script src="/bower_components/angular/angular.js"></script>
+
 <script src="/bower_components/json3/lib/json3.js"></script>
 <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
 <script src="/bower_components/angular-resource/angular-resource.js"></script>
@@ -72,8 +75,10 @@
 <!-- endbuild -->
 <script src="/bower_components/openlayers/lib/OpenLayers.js"></script>
 <!-- build:js({.tmp,app}) scripts/layout.course.examples.scripts.js -->
-<script src="/scripts/app.course.examples.js"></script>
+
+<script src="/scripts/directives/i18nDirective.js"></script>
 <script src="/scripts/controllers/course/examples/map/openlayerscontroller.js"></script>
 <!-- endbuild -->
+
 </body>
 </html>
