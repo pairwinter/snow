@@ -65,9 +65,9 @@ module.exports = function (grunt) {
                     '<%= yeoman.app %>/images/{,**/}*.{png,jpg,jpeg,gif,webp,svg}'
                 ]
             },
-            assemble: {
+            layout_i18n: {
                 files: ['<%= yeoman.app %>/{,**/}*.html'],
-                tasks: ['assemble:serve']
+                tasks: ['tiny_layout:serve','tiny_i18n:serve']
             }
         },
         tiny_layout:{
@@ -85,9 +85,10 @@ module.exports = function (grunt) {
         tiny_i18n:{
             serve:{
                 options:{
+                    offset_i18n_name:-1,
                     js_wrapper:{
                         name:'angular',
-                        appName:'snow',
+                        appName:'snowApp',
                         i18nFactoryName:'i18n'
                     },
                     js_dest:'.tmp/js/i18n'
