@@ -3,7 +3,7 @@
 describe('Controller: MainCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('resourcesApp'));
+  beforeEach(module('snowApp'));
 
   var MainCtrl,
     scope;

@@ -2,9 +2,9 @@
 
 /**
  * @ngdoc overview
- * @name resourcesApp
+ * @name snowApp
  * @description
- * # resourcesApp
+ * # snowApp
  *
  * Main module of the application.
  */

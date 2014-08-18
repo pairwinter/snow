@@ -2,10 +2,10 @@
 
 /**
  * @ngdoc function
- * @name resourcesApp.controller:MainCtrl
+ * @name snowApp.controller:MainCtrl
  * @description
  * # MainCtrl
- * Controller of the resourcesApp
+ * Controller of the snowApp
  */
 angular.module('snowApp')
   .controller('MainCtrl', function ($scope) {

@@ -67,7 +67,7 @@ module.exports = function (grunt) {
             },
             layout_i18n: {
                 files: ['<%= yeoman.app %>/{,**/}*.html'],
-                tasks: ['tiny_layout:serve','tiny_i18n:serve']
+                tasks: ['clean:tmp_i18n_views','tiny_layout:serve','tiny_i18n:serve']
             }
         },
         tiny_layout:{
@@ -106,7 +106,7 @@ module.exports = function (grunt) {
             options: {
                 port: 9000,
                 // Change this to '0.0.0.0' to access the server from outside.
-                hostname: 'localhost',
+                hostname: '192.168.1.135',
                 livereload: 35729
             },
             livereload: {
@@ -182,7 +182,8 @@ module.exports = function (grunt) {
                     }
                 ]
             },
-            server: '.tmp'
+            server: '.tmp',
+            tmp_i18n_views:'.tmp/views'
         },
 
         // Add vendor prefixed styles

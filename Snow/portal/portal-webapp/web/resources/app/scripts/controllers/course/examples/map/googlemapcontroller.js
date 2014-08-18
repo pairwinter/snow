@@ -2,10 +2,10 @@
 
 /**
  * @ngdoc function
- * @name resourcesApp.controller:CourseExamplesMapGooglemapcontrollerCtrl
+ * @name snowApp.controller:CourseExamplesMapGooglemapcontrollerCtrl
  * @description
  * # CourseExamplesMapGooglemapcontrollerCtrl
- * Controller of the resourcesApp
+ * Controller of the snowApp
  */
 angular.module('snowApp')
   .controller('CourseExamplesMapGooglemapcontrollerCtrl', function ($scope) {

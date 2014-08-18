@@ -2,10 +2,10 @@
 
 /**
  * @ngdoc function
- * @name resourcesApp.controller:CourseExamplesMapOpenlayerscontrollerCtrl
+ * @name snowApp.controller:CourseExamplesMapOpenlayerscontrollerCtrl
  * @description
  * # CourseExamplesMapOpenlayerscontrollerCtrl
- * Controller of the resourcesApp
+ * Controller of the snowApp
  */
 angular.module('snowApp').controller('CourseExamplesMapOpenlayerscontrollerCtrl', function ($scope) {
     $scope.$on('doneRender',function(){

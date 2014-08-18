@@ -2,10 +2,10 @@
 
 /**
  * @ngdoc function
- * @name resourcesApp.controller:AboutCtrl
+ * @name snowApp.controller:AboutCtrl
  * @description
  * # AboutCtrl
- * Controller of the resourcesApp
+ * Controller of the snowApp
  */
 angular.module('snowApp')
   .controller('AboutCtrl', function ($scope) {
