@@ -6,6 +6,7 @@
  * @description
  * # i18nDirective
  */
+console.log("Excute i18nDirective");
 angular.module('snowApp').directive('i18n', function (i18n) {
     return {
         restrict: 'EA',

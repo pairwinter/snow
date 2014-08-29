@@ -1,4 +1,8 @@
 <div ng-controller="CourseExamplesMapOpenlayerscontrollerCtrl">
-    <div ng-repeat="item in items" snow-render-start><span ng-bind="item"></span></div>
-    <div ng-click="buildMap($event)" style="width: 500px;height: 500px">buildMap</div>
+    <button ng-click="change()">Change</button>
+    <div ng-repeat="item in items | limitTo:totalDisplayed" repeat-render-done>
+        <span ng-bind="item"></span>
+    </div>
+    <button type="button" ng-show="totalDisplayed<items.length" ng-click="totalDisplayed=totalDisplayed+10" class="ng-hide">Show More...</button>
+    <div ng-show="isShow" ng-click="buildMap($event)" style="width: 500px;height: 500px" class="ng-hide">buildMap</div>
 </div>

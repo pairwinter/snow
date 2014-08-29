@@ -7,9 +7,10 @@
  * # renderDone
  */
 angular.module('snowApp')
-    .directive('snowRenderDone', function () {
+    .directive('repeatRenderDone', function () {
         return {
             restrict: 'A',
+            priority:10,
             link: function postLink(scope, element, attrs) {
                 if (scope.$last) {
                     console.log("Render Done!");
