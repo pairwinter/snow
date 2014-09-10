@@ -1,0 +1,9 @@
+{
+    "base_home":"主页",
+    "base_ie7_lessthen":"<p class=\"browsehapp\">您正在使用<strong>过时的</strong> 浏览器，为了更好的浏览体验，请您 <a href=\"http://browsehappy.com/\">升级浏览器</a>。</p>",
+    "nav_course_name":"课程",
+	"course_create_course":"创建课程",
+	"course_create_charpter":"创建章",
+	"course_create_course":"创建小节",
+	"error_can_not_receive_data":"未能接收到数据"
+}

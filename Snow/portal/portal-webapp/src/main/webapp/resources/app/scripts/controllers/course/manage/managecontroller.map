@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "managecontroller.js",
+  "sourceRoot": "",
+  "sources": [
+    "managecontroller.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA;AAAA,EAAA,YAAA,CAAA;AAEA;AAAA;;;;;;KAFA;AAAA,EASA,OAAO,CAAC,MAAR,CAAe,SAAf,CAAyB,CAAC,UAA1B,CAAqC,kCAArC,EAAyE,SAAC,MAAD,EAAQ,yBAAR,GAAA;WACrE,yBAAyB,CAAC,yBAA1B,CAAA,CAAqD,CAAC,IAAtD,CAA2D,SAAC,IAAD,GAAA;aACvD,MAAM,CAAC,oBAAP,GAA8B,KADyB;IAAA,CAA3D,EAEC,SAAC,IAAD,GAAA,CAFD,EADqE;EAAA,CAAzE,CATA,CAAA;AAAA"
+}

@@ -2,10 +2,13 @@ package com.pairwinter.snow.course.impl;
 
 import com.pairwinter.snow.base.column.BaseInfoColumn;
 import com.pairwinter.snow.base.dao.SearchType;
+import com.pairwinter.snow.base.model.BaseInfo;
 import com.pairwinter.snow.course.column.CourseColumn;
 import com.pairwinter.snow.course.dao.CourseDao;
 import com.pairwinter.snow.course.model.Course;
 import com.pairwinter.snow.course.service.CourseService;
+import com.pairwinter.snow.exception.BaseException;
+import com.pairwinter.snow.exception.BaseExceptionCode;
 import com.pairwinter.snow.utils.datapage.DataPage;
 import com.pairwinter.snow.utils.datapage.OrderBy;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -25,6 +28,7 @@ public class CourseServiceImpl implements CourseService {
     private CourseDao courseDao;
     @Override
     public void addCourse(Course course) throws Exception {
+        course.buildCreateBaseInfo();
         courseDao.insert(course);
     }
 
@@ -63,6 +67,15 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public void modifyCourse(Course course) throws Exception {
+        if(course == null || course.getId() == null || course.getId().longValue()==0){
+            throw new BaseException(BaseExceptionCode.ENTITY_NOT_EXISTS);
+        }
+        Course oldCourse = courseDao.getById(course.getId());
+        if(oldCourse == null){
+            throw new BaseException(BaseExceptionCode.ENTITY_NOT_EXISTS);
+        }
+        course.setCreatedTime(oldCourse.getCreatedTime());
+        course.buildModifiedBaseInfo();
         courseDao.save(course);
     }
 

@@ -9,7 +9,8 @@ package com.pairwinter.snow.base.column;
 public enum BaseInfoColumn
 {
 	ID("id"),
-	id("_id"), 
+	id("_id"),
+    name("name"),
     accountId("accountId"),
 	status("status"),
 	createdId("createdId"),

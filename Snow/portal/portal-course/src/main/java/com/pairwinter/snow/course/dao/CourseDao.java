@@ -20,10 +20,13 @@ public class CourseDao extends MongoBaseDao<Course>{
     private static final Logger logger	= LoggerFactory.getLogger(CourseDao.class);
 
     public DataPage<Course> searchCourses(Course course,Integer pageNo, Integer pageSize,List<OrderBy> orderByList) throws Exception {
-        Criteria criteria = null;
-        if(course.getName() != null){
-            criteria = SearchType.LIKE.createQuery(CourseColumn.NAME.getName(),course.getName());
+        Criteria criteria = new Criteria();
+        if(course != null){
+            if(course.getName() != null){
+                criteria = SearchType.LIKE.createQuery(CourseColumn.NAME.getName(),course.getName());
+            }
         }
+
         return this.pagedQuery(new Query(criteria),pageNo,pageSize,orderByList);
     }
 }

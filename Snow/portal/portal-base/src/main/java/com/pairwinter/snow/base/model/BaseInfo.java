@@ -1,5 +1,6 @@
 package com.pairwinter.snow.base.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.springframework.data.annotation.Id;
 
 import java.io.Serializable;

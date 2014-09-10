@@ -5,6 +5,7 @@ import com.pairwinter.snow.utils.datapage.DataPage;
 import com.pairwinter.snow.utils.datapage.OrderBy;
 
 import java.math.BigInteger;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -21,7 +22,12 @@ public interface CourseService {
 
     public void removeCoursesByIds(List<BigInteger> ids) throws Exception;
 
-    public void modifyCourse(Course course) throws Exception;
+    /**
+     * Get the old Course and update the properties with the value of newCourse
+     * @param newCourse Contain the id and other properties that to be updated.
+     * @throws Exception
+     */
+    public void modifyCourse(Course newCourse) throws Exception;
     public void modifyCourseName(BigInteger id, String courseName) throws Exception;
 
     public Course fetchCourse(BigInteger courseId) throws Exception;

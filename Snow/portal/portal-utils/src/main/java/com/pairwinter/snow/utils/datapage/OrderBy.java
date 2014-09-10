@@ -60,6 +60,12 @@ public class OrderBy {
         this.orderDirection = orderDirection;
     }
 
+    public OrderBy(String columnName, String orderDirection) {
+        super();
+        this.columnName = columnName;
+        this.orderDirection = OrderDirection.valueOf(orderDirection.toUpperCase());
+    }
+
 	public OrderBy(String tableName, String columnName, OrderDirection orderDirection) {
 		super();
         this.tableName = tableName;

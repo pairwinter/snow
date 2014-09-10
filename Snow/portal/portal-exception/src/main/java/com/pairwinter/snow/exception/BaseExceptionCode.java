@@ -10,7 +10,11 @@ public enum BaseExceptionCode {
     CALENDAR_INVALID_EMAIL(17101,"Invalid email address(s)."),
     MULTIPLE_DISPLAY_LAYER_NAME(9003,"Multiple display layer name"),
     MULTIPLE_REGION_NAME(9004,"Multiple region name"),
-    ARCGIS_MAP_URL_INVALID(9005,"ArcGIS map url is invalid!");
+    ARCGIS_MAP_URL_INVALID(9005,"ArcGIS map url is invalid!"),
+    ENTITY_NOT_EXISTS(9006,"The Entity that you request is not exist.")
+
+    ;
+    //Course
     private int code;
     private String message;
     private BaseExceptionCode(int code, String message){

@@ -14,6 +14,7 @@
     <modules>
         <module>../portal-utils</module>
         <module>../portal-exception</module>
+        <module>../portal-course</module>
     </modules>
     <dependencies>
         <dependency>
@@ -24,6 +25,11 @@
         <dependency>
             <groupId>com.pairwinter.snow</groupId>
             <artifactId>portal-exception</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.pairwinter.snow</groupId>
+            <artifactId>portal-course</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>

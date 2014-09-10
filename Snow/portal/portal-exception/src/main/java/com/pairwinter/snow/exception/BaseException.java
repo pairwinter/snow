@@ -1,7 +1,6 @@
 package com.pairwinter.snow.exception;
 
 import com.pairwinter.snow.utils.json.JsonUtils;
-import org.codehaus.jackson.annotate.JsonUnwrapped;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -27,6 +26,12 @@ public class BaseException extends RuntimeException implements Serializable {
 
     public BaseException(String message) {
         super(message);
+        init();
+    }
+
+    public BaseException(BaseExceptionCode code) {
+        super(code.getMessage());
+        this.code = code.getCode();
         init();
     }
 
@@ -98,6 +103,7 @@ public class BaseException extends RuntimeException implements Serializable {
 
     public String toJSON(){
         Map<String,Object> json = new HashMap<String, Object>();
+        json.put("error",true);
         json.put("code",this.getCode());
         json.put("type",this.getType());
         return JsonUtils.toJson(json);

@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "googlemapcontroller.js",
+  "sourceRoot": "",
+  "sources": [
+    "googlemapcontroller.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA;AAAA,EAAA,YAAA,CAAA;AAEA;AAAA;;;;;;KAFA;AAAA,EASA,OAAO,CAAC,MAAR,CAAe,SAAf,CAAyB,CAAC,UAA1B,CAAqC,0CAArC,EAAiF,SAAC,MAAD,GAAA;WAC7E,MAAM,CAAC,aAAP,GAAuB,CACrB,mBADqB,EAErB,WAFqB,EAGrB,OAHqB,EAInB,MAJmB,EAKnB,OALmB,EAMnB,OANmB,EAOnB,OAPmB,EADsD;EAAA,CAAjF,CATA,CAAA;AAAA"
+}
