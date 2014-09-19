@@ -7,6 +7,7 @@ import com.pairwinter.snow.course.model.Chapter;
 import com.pairwinter.snow.course.service.ChapterService;
 import com.pairwinter.snow.utils.datapage.DataPage;
 import com.pairwinter.snow.utils.datapage.OrderBy;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.util.CollectionUtils;
@@ -22,6 +23,7 @@ public class ChapterServiceImpl implements ChapterService {
     private ChapterDao chapterDao;
     @Override
     public void addChapter(Chapter chapter) throws Exception {
+        if(chapter == null || chapter.getCourseId() == null || StringUtils.isEmpty(chapter.getName()))
         chapterDao.insert(chapter);
     }
 

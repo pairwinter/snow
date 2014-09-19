@@ -21,10 +21,13 @@ public class ChapterDao extends MongoBaseDao<Chapter>{
     private static final Logger logger	= LoggerFactory.getLogger(ChapterDao.class);
 
     public DataPage<Chapter> searchChapters(Chapter chapter,Integer pageNo, Integer pageSize,List<OrderBy> orderByList) throws Exception {
-        Criteria criteria = null;
+        Query query = new Query();
         if(chapter.getName() != null){
-            criteria = SearchType.LIKE.createQuery(ChapterColumn.NAME.getName(),chapter.getName());
+            query.addCriteria(SearchType.LIKE.createQuery(ChapterColumn.NAME.getName(),chapter.getName()));
         }
-        return this.pagedQuery(new Query(criteria),pageNo,pageSize,orderByList);
+        if(chapter.getCourseId() != null){
+            query.addCriteria(SearchType.E.createQuery(ChapterColumn.COURSE_ID.getName(),chapter.getCourseId()));
+        }
+        return this.pagedQuery(query,pageNo,pageSize,orderByList);
     }
 }
