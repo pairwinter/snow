@@ -20,7 +20,8 @@ public class InitBinderController {
 
     @InitBinder
     public void initWebDataBinder(WebDataBinder binder){
-        binder.registerCustomEditor(ExoticItem.class,new ExoticEditor());
+        binder.registerCustomEditor(String.class,new StringEditor());
+//        binder.registerCustomEditor(ExoticItem.class,new ExoticEditor());
 //        binder.addValidators();
     }
 }
