@@ -10,6 +10,7 @@
 angular.module('snowApp').controller 'CourseManageListCoursesCtrl', ($scope) ->
     gridData = ({id:"id"+person,name:"name"+person,age:person} for person in [1..500])
     $scope.pageData = []
+    $scope.selectedItems = []
     $scope.pagingOptions = {
         pageSizes:[5,50,100,150,200,250,500,1000]
         pageSize:250
@@ -37,6 +38,7 @@ angular.module('snowApp').controller 'CourseManageListCoursesCtrl', ($scope) ->
             {field:"name",width:150}
             {field:"age",width:100}
         ]
+        selectedItems:$scope.selectedItems
     }
 
     $scope.$watch('pagingOptions',(newVal,oldVal)->
@@ -44,5 +46,10 @@ angular.module('snowApp').controller 'CourseManageListCoursesCtrl', ($scope) ->
             $scope.setPagingData(gridData,newVal.currentPage,newVal.pageSize)
         else if(newVal.pageSize != oldVal.pageSize)
             $scope.setPagingData(gridData,1,newVal.pageSize)
+    ,true)
+
+    $scope.$watch('selectedItems',(newSelectedItems,oldSelectedItems)->
+        console.log(newSelectedItems)
+        console.log(oldSelectedItems)
     ,true)
     ""

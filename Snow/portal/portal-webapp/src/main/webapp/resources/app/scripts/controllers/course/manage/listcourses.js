@@ -24,6 +24,7 @@
       return _results;
     })();
     $scope.pageData = [];
+    $scope.selectedItems = [];
     $scope.pagingOptions = {
       pageSizes: [5, 50, 100, 150, 200, 250, 500, 1000],
       pageSize: 250,
@@ -59,7 +60,8 @@
           field: "age",
           width: 100
         }
-      ]
+      ],
+      selectedItems: $scope.selectedItems
     };
     $scope.$watch('pagingOptions', function(newVal, oldVal) {
       if (newVal !== oldVal && newVal.currentPage !== oldVal.currentPage) {
@@ -67,6 +69,10 @@
       } else if (newVal.pageSize !== oldVal.pageSize) {
         return $scope.setPagingData(gridData, 1, newVal.pageSize);
       }
+    }, true);
+    $scope.$watch('selectedItems', function(newSelectedItems, oldSelectedItems) {
+      console.log(newSelectedItems);
+      return console.log(oldSelectedItems);
     }, true);
     return "";
   });
