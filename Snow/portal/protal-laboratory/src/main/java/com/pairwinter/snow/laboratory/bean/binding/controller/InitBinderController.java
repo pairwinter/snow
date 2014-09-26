@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class InitBinderController {
     @RequestMapping(value = "/post",method = RequestMethod.POST,produces = "application/json")
     @ResponseBody
-    public String parsePost(@RequestParam(value = "str",required = true) String str,@RequestParam(value = "name",required = true)ExoticItem item){
+    public String parsePost(@RequestParam(value = "str",required = true) String str,ExoticItem item){
         return item.getName();
     }
 

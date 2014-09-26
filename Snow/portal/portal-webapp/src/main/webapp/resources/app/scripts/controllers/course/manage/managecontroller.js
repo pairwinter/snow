@@ -9,7 +9,7 @@
     * # CourseManageManagecontrollerCtrl
     * Controller of the snowApp
    */
-  angular.module('snowApp').controller('CourseManageManagecontrollerCtrl', function($scope, CourseManageCourseservice) {
+  angular.module('snowApp').controller('CourseManageCtrl', function($scope, CourseManageCourseservice) {
     return CourseManageCourseservice.fetchRecentUpgradeCourses().then(function(data) {
       return $scope.recentUpgradeCourses = data;
     }, function(data) {});

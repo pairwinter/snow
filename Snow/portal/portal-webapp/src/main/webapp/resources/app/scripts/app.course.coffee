@@ -15,13 +15,12 @@ angular.module('snowApp', [
     'ngRoute'
     'ngSanitize'
     'ngTouch'
-]).config(($routeProvider)->
+    'ngGrid'
+    'i18n'
+]).config(($routeProvider,i18nProvider)->
     $routeProvider.when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-    }).when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
+        templateUrl: i18nProvider.parseUrl('/views/course/manage/listcourses.html'),
+        controller: 'CourseManageListCoursesCtrl'
     }).otherwise({
         redirectTo: '/'
     })

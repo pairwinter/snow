@@ -9,6 +9,7 @@
     <!-- build:css(.) styles/layout.default.vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="/bower_components/ng-grid/ng-grid.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/layout.default.main.css -->
@@ -24,9 +25,8 @@
 <div class="container">
     <div class="header">
         <ul class="nav nav-pills pull-right">
-            <li class="active"><a ng-href="#">Home</a></li>
-            <li><a ng-href="#/about">About</a></li>
-            <li><a ng-href="#">Contact</a></li>
+            <li class="active"><a ng-href="#"><%=base_home%></a></li>
+            <li><a ng-href="views/course/manage/<%=current_language%>/coursemain.html"><%=nav_course_name%></a></li>
         </ul>
         <h3 class="text-muted">resources</h3>
     </div>
@@ -56,12 +56,11 @@
 <script src="/bower_components/json3/lib/json3.min.js"></script>
 <![endif]-->
 <!-- endbuild -->
-
+<script src="/bower_components/angular/angular.js"></script>
+<script src="/js/i18n/<%=current_language%>.js"></script>
 <!-- build:js(.) scripts/layout.default.vendor.js -->
 <!-- bower:js -->
 <script src="/bower_components/jquery/dist/jquery.js"></script>
-<script src="/bower_components/es5-shim/es5-shim.js"></script>
-<script src="/bower_components/angular/angular.js"></script>
 <script src="/bower_components/json3/lib/json3.js"></script>
 <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
 <script src="/bower_components/angular-resource/angular-resource.js"></script>
@@ -72,13 +71,14 @@
 <script src="/bower_components/angular-route/angular-route.js"></script>
 <script src="/bower_components/underscore/underscore.js"></script>
 <script src="/bower_components/backbone/backbone.js"></script>
+<script src="/bower_components/ng-grid/build/ng-grid.js"></script>
+<script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 
 <!-- build:js({.tmp,app}) scripts/layout.default.scripts.js -->
 <script src="/scripts/app.js"></script>
-<script src="/scripts/controllers/main.js"></script>
-<script src="/scripts/controllers/about.js"></script>
 <!-- endbuild -->
+
 </body>
 </html>

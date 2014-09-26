@@ -63,36 +63,58 @@ module.exports = function (grunt) {
                 files: [
                     '<%= yeoman.app %>/{,**/}*.html',
                     '.tmp/styles/{,**/}*.css',
-                    '<%= yeoman.app %>/images/{,**/}*.{png,jpg,jpeg,gif,webp,svg}'
+                    '<%= yeoman.app %>/images/{,**/}*.{png,jpg,jpeg,gif,webp,svg}',
+					'<%= yeoman.app %>/config/{,**/}*.json'
                 ]
             },
             layout_i18n: {
-                files: ['<%= yeoman.app %>/{,**/}*.html'],
-                tasks: ['clean:tmp_i18n_views','tiny_layout:serve','tiny_i18n:serve']
+                files: ['<%= yeoman.app %>/{,**/}*.html','<%= yeoman.app %>/config/{,**/}*.json'],
+                tasks: ['clean:tmp_i18n_views','tiny_layout:copy_serve','tiny_layout:index_serve','tiny_layout:course_serve','tiny_i18n:serve']
             }
         },
         tiny_layout:{
-            serve:{
+			copy_serve:{
+				options:{
+					delimiters:['[%','%]']
+				},
+				layout:'<%= yeoman.app %>/views/layouts/layout.copy.html',
+				expand:true,
+				cwd:'<%= yeoman.app %>/views',
+				src:['course/{,**/}*.html','index/{,**/}*.html'],
+				dest: '.tmp/views'
+			},
+			index_serve:{
+				options:{
+					delimiters:['[%','%]']
+				},
+				layout:'<%= yeoman.app %>/views/layouts/layout.index.html',
+				expand:true,
+				cwd:'<%= yeoman.app %>/views',
+				src:['index/{,**/}*.html'],
+				dest: '.tmp/views'
+			},
+			course_serve:{
                 options:{
                     delimiters:['[%','%]']
                 },
-                layout:'<%= yeoman.app %>/views/layouts/layout.course.examples.html',
+                layout:'<%= yeoman.app %>/views/layouts/layout.course.html',
                 expand:true,
-                cwd:'<%= yeoman.app %>',
-                src:['views/course/examples/{,**/}*.html'],
-                dest: '.tmp/'
+                cwd:'<%= yeoman.app %>/views/',
+                src:['course/manage/coursemain.html'],
+                dest: '.tmp/views'
             }
+
         },
         tiny_i18n:{
             serve:{
                 options:{
-                    offset_i18n_name:-1,
-                    js_wrapper:{
-                        name:'angular',
-                        appName:'snowApp',
-                        i18nFactoryName:'i18n'
-                    },
-                    js_dest:'.tmp/js/i18n'
+                    offset:-1,
+                    buildJS:{
+                        type:'angular',
+                        appName:'i18n',
+                        providerName:'i18n',
+						dest:'.tmp/js/i18n'
+                    }
                 },
                 i18n:['<%= yeoman.app %>/config/i18n/en_US.json','<%= yeoman.app %>/config/i18n/zh_CN.json'],
                 expand:true,
@@ -125,12 +147,12 @@ module.exports = function (grunt) {
                     open: true,
                     middleware: function (connect) {
                         return [
-                            connect.static('.tmp'),//config the static resource folder
+                            connect.static('.tmp',{index:"views/index/en_US/index.html"}),//config the static resource folder
                             connect().use(
                                 '/bower_components',
                                 connect.static('./bower_components')
                             ),
-                            connect.static(appConfig.app)
+                            connect.static(appConfig.app/*,{index:"views/index/en_US/index.html"}*/)//配置首页显示的页面，默认是index.html,这里进行了设置。
                         ];
                     }
                 }
@@ -221,8 +243,12 @@ module.exports = function (grunt) {
             },
             app: {
                 src: ['<%= yeoman.app %>/index.html'],
-                ignorePath: /\.\.\//
+                ignorePath: /(\.\.)/
             },
+			layout:{
+				src: ['<%= yeoman.app %>/views/layouts/{,**/}*.html'],
+				ignorePath: /(\.\.\/\.\.\/\.\.)/
+			},
             sass: {
                 src: ['<%= yeoman.app %>/styles/{,**/}*.{scss,sass}'],
                 ignorePath: /(\.\.\/){1,2}bower_components\//
@@ -469,7 +495,9 @@ module.exports = function (grunt) {
             'clean:server',
             'wiredep',
             'concurrent:server',
-            'tiny_layout:serve',
+            'tiny_layout:copy_serve',
+            'tiny_layout:index_serve',
+            'tiny_layout:course_serve',
             'tiny_i18n:serve',
             'autoprefixer',
             'connect:livereload',
