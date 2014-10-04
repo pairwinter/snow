@@ -13,11 +13,12 @@ package com.pairwinter.snow.laboratory.jdk.thread;
  *
  * Future:任务执行结果Handler对象，通过get方法可获取任务的结果，如果get时任务还未结束，那么此时会阻塞线程。
  *
- * Executors:工具类，提供多种ExecutorService实现的执行器。比如线程池执行器，定时线程池执行器。
+ * Executors:工具类，还是一个工厂，提供多种实现了ExecutorService的执行器。比如线程池执行器，定时线程池执行器。
  *
  *
  *
  * Created by damon on 9/30/14.
  */
 public class ThreadPoolUsage {
+
 }
