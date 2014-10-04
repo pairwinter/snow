@@ -17,7 +17,7 @@
         <module>portal-utils</module>
         <module>portal-course</module>
         <module>portal-base</module>
-        <module>protal-laboratory</module>
+        <module>portal-laboratory</module>
     </modules>
     <url>http://www.everbridge.com/</url>
     <properties>
