@@ -13,13 +13,14 @@
     "angular-touch": "1.2.16",
     "angular-route": "1.2.16",
     "backbone": "~1.1.2",
-    "openlayers": "~2.13.1",
     "ng-grid": "~2.0.13",
-    "angular-bootstrap": "~0.11.0"
+    "angular-bootstrap": "~0.11.0",
+    "openlayers": "*"
   },
   "devDependencies": {
     "angular-mocks": "1.2.16",
-    "angular-scenario": "1.2.16"
+    "angular-scenario": "1.2.16",
+    "openlayers": "*"
   },
   "appPath": "app"
 }
