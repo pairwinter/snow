@@ -12,11 +12,10 @@
     <artifactId>portal</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>portal-webapp</module>
-        <module>portal-exception</module>
         <module>portal-utils</module>
+        <module>portal-exception</module>
         <module>portal-course</module>
-        <module>portal-base</module>
+        <module>portal-webapp</module>
         <module>portal-laboratory</module>
     </modules>
     <url>http://www.everbridge.com/</url>

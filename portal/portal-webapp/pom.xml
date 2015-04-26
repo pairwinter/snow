@@ -11,11 +11,6 @@
 
     <artifactId>portal-web</artifactId>
     <packaging>pom</packaging>
-    <modules>
-        <module>../portal-utils</module>
-        <module>../portal-exception</module>
-        <module>../portal-course</module>
-    </modules>
     <dependencies>
         <dependency>
             <groupId>com.pairwinter.snow</groupId>
