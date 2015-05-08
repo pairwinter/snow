@@ -12,6 +12,7 @@
     <artifactId>portal</artifactId>
     <packaging>pom</packaging>
     <modules>
+        <module>portal-base</module>
         <module>portal-utils</module>
         <module>portal-exception</module>
         <module>portal-course</module>
